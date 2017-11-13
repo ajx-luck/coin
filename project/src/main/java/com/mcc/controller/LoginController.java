@@ -1,0 +1,40 @@
+package com.mcc.controller;
+
+import com.mcc.bean.User;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+/**
+ * Created by B04e on 2017/11/13.
+ */
+@Controller
+public class LoginController {
+    User user = new User();
+    @RequestMapping("/login")
+    public String login2(ModelMap map) {
+        map.addAttribute("user", user);
+        return "login2";
+    }
+
+    @RequestMapping("/register")
+    public String register(ModelMap map){
+        return "register";
+    }
+
+    @RequestMapping("/getpw")
+    public String getPassword(ModelMap map){
+        return "getpw";
+    }
+
+    @RequestMapping(value = "/loginIn",method = RequestMethod.POST)
+    public String loginIn(User user,ModelMap map){
+        if("admin".equals(user.getAccount()) && "123456".equals(user.getPassword())){
+            return "index";
+        }
+        map.addAttribute("user",user);
+        map.addAttribute("msgError","账号密码不正确，请重试");
+        return "login2";
+    }
+}
