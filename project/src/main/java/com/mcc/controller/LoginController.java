@@ -37,4 +37,30 @@ public class LoginController {
         map.addAttribute("msgError","账号密码不正确，请重试");
         return "login2";
     }
+
+    @RequestMapping("/te")
+    public String test(ModelMap map){
+        return "test";
+    }
+
+    @RequestMapping("/news")
+    public String news(ModelMap map){
+        return "news";
+    }
+
+    @RequestMapping("/home")
+    public String layout(ModelMap map){
+        map.addAttribute("name","home");
+        return "layout";
+    }
+
+    @RequestMapping("/map")
+    public String map(ModelMap map){
+        return "map";
+    }
+
+    @RequestMapping(value="/hello")
+    public String hello(ModelMap map){
+        return "hello";
+    }
 }
